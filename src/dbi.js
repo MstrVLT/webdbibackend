@@ -5,6 +5,7 @@ export const dbi = function() {
     // this.decoder = new TextDecoder();
 
     const cmdHeader = new Parser()
+        .endianess("little")
         .array("magic", {
             type: "uint8",
             length: 4
@@ -26,7 +27,9 @@ export const dbi = function() {
 
 
             if (result.data && result.data.byteLength === 16) {
-                let buffer = Buffer.from(result.data.to);
+                console.log(result.data)
+                console.log(result.data.buffer)
+                let buffer = Buffer.from(result.data.buffer);
                 console.log(JSON.stringify(cmdHeader.parse(buffer)));
             }
 
