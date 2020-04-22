@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <button class="button is-link is-fullwidth" @click="connect">
+          Connect Switch
+        </button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { dbi } from './../dbi.js'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  name: "Home",
+  methods: {
+    connect: function() {
+      // let self = this
+      let _dbi = new dbi();
+      _dbi.connect()
+      // .then(function() {
+      //
+      //   self.$router.push({ name: "filelist" });
+      // });
+    }
   }
-}
+};
 </script>
